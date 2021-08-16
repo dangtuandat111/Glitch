@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Arrays</h2>
+
+<p>The best way to loop through an array is using a standard for loop:</p>
+
+<p id="demo">Demo</p>
+<p id="add1">Add</p>
+<p id="add2">Add2</p>
+<p id="add3">Add3</p>
+
+
+<script>
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+let fLen = fruits.length;
+//for loop
+let text = "<ul>";
+for (let i = 0; i < fLen; i++) {
+  text += "<li style = 'list-style-type: square;'>" + fruits[i] + "</li>";
+}
+text += "</ul>";
+
+//foreach 
+let newtext = "<ul>";
+fruits.forEach(element => {
+    newtext += "<li> NT " + element + "</li>";
+});
+newtext +="</ul>";
+
+document.getElementById("demo").innerHTML = text;
+document.getElementById("add1").innerHTML = newtext;
+document.getElementById("demo").innerHTML += fruits.join(" * ");
+
+
+//Random
+const points = [40, 100, 1, 5, 25, 10];
+document.getElementById("add2").innerHTML += ": "+points+"</br >";
+const points1 = [40, 100, 1, 5, 25, 10];
+points1.sort(function(a, b){return a - b});
+// Ham sap xep 
+// Neu sort khong co function phia sau se coi la string de sap xep
+document.getElementById("add2").innerHTML += points1+"</br >";
+
+function myFunction() {
+  for (let i = points.length -1; i > 0; i--) {
+    let j = Math.floor(Math.random() * i)
+    //Math.random return 0-1
+    let k = points[i]
+    points[i] = points[j]
+    points[j] = k
+  }
+  console.log(points);
+  document.getElementById("add2").innerHTML += points+"</br >";
+}
+
+//Map ghep gia tri myFunction voi day truoc do
+const numbers1 = [45, 4, 9, 16, 25];
+const numbers2 = numbers1.map(myFunction);
+document.getElementById("add3").innerHTML = numbers2;
+//Function chua 3 bien: gia tri, item index , chinh day do
+function myFunction(value,index, array) {
+  console.log(value+" "+index+" "+array.length)
+  return value + index + array.length;
+}
+
+const over18 = numbers1.filter(myFunction);
+document.getElementById("add3").innerHTML += over18 +"</br >";
+function myFunction(value, index, array) {
+  return value > 18;
+}
+/*
+reduce()        reduce to one single value through left to right - number
+reduceRight()   reduce to one single value through right to left - number
+every()         check if all values pass test function() - false or true
+some()          check if some values pass test function() - false or true
+indexOf()       search value in array - return fist index founded
+lastIndexOf()   search value in array - return last index founded  
+includes()      check if value in array 
+find()          find value pass test - value
+... 
+*/
+
+</script>
+
+</body>
+</html>

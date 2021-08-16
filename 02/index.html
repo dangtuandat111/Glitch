@@ -5,7 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Flat_tick_icon.svg/1200px-Flat_tick_icon.svg.png">
 <title>Time right now is: </title>
+
+
+
 <style>
+
+html {
+  scroll-behavior: smooth;
+}
 .button {
   background-color: #4CAF50; /* Green */
   border: none;
@@ -28,17 +35,26 @@
 }
 </style>
 </head>
-<div class="button button2" onclick="myFunction2()">
+</body>
+<div class="button button2" onclick="myFunction2()" id = "change">
     <p>Click me</p>
 </div>
 <h2>What Can JavaScript Do?</h2>
 
-<p id="demo">JS can do</p>
+<p id="demo" style = "background-color: bisque; display: block; border-style: 1px; width: 25%; text-align: center;">JS can do</p>
 <p>Day la vi du </p>
 
 <button onclick="myFunction()">Try it</button>
+<p id = "note">vi du</p>
+<p id = "note">vi du 2</p>
+
+<!--In trang-->
+<button onclick="window.print()">Print this page</button>
+
+<a href="#change" id = "back">Back</a>
 
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type = "text/JavaScript" src = "scripts.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </html>
