@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript async / await</h2>
+
+<h1 id="demo"></h1>
+
+<script>
+async function myDisplay() {
+  let myPromise = new Promise(function(myResolve, myReject) {
+  	let x = 5;
+ 	if(x == 0){myResolve("I love You !!");}
+    else myReject("I hate u");
+  });
+  document.getElementById("demo").innerHTML = 
+  await myPromise.then(
+  	function(value) {alert(value); return value;},
+  	function(value) {alert(value);return value;}
+  );
+}
+
+myDisplay();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!--
+In JavaScript there are 5 different data types that can contain values:
+
+    string
+    number
+    boolean
+    object
+    Null
+    Undefined 
+    Symbol 
+    Object
+    Function
+
+There are 6 types of objects:
+
+    Object
+    Date
+    Array
+    String
+    Number
+    Boolean
+
+And 2 data types that cannot contain values:
+
+    null
+    undefined
+
+-->
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Create Object from JSON String</h2>
+
+<p id="demo"></p>
+
+<script>
+let text = '{"employees":[' +
+'{"firstName":"John","lastName":"Doe" },' +
+'{"firstName":" \"Anna\" de ","lastName":"Smith" },' +
+'{"firstName":"Peter","lastName":"Jones" }]}';
+
+const obj = JSON.parse(text);
+document.getElementById("demo").innerHTML =
+obj.employees[1].firstName + " " + obj.employees[1].lastName;
+</script>
+
+</body>
+</html>

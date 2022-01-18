@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Callbacks</h2>
+<!-- Đảm bảo 1 hàm sẽ chỉ thực hiện sau khi thực hiện xong 1 hàm-->
+
+<p id="demoCallBack">Day la</p>
+
+<script>
+    const resultPromise = function(idea) {
+    return new Promise(function(resolve, reject) {
+        if (idea.isGood) {
+            console.log(idea.idea);
+            resolve(idea);
+        } else {
+            reject({
+                idea: idea.idea,
+                reason: "Not Realistic"
+            });
+        }
+    });
+};
+
+resultPromise({
+        idea: "Make Gold from Iron",
+        isGood: false
+    })
+    .then(function() {
+        console.info("I'm Rich!");
+    }, function(err) {
+        console.info("Rejected as: " + err.idea + "hahaha");
+    });
+
+</script>

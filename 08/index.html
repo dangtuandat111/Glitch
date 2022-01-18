@@ -1,0 +1,97 @@
+<!--
+    callback
+    async / await
+    promise
+
+-->
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Callbacks</h2>
+<!-- Đảm bảo 1 hàm sẽ chỉ thực hiện sau khi thực hiện xong 1 hàm-->
+<p>Do a calculation and then display the result.</p>
+<button  type="button" onclick="myCalculator(5, 5, myDisplayer1)">ALO</button>
+<p id="demoCallBack">Day la</p>
+
+<script>
+function myDisplayer1(some) {
+    document.getElementById("demoCallBack").innerHTML += some;
+}
+
+function myCalculator(num1, num2, myCallback) {
+    let sum = num1 + num2;
+    setTimeout(myCallback(sum), 200000);
+    sum = num1-num2;
+    setTimeout(myCallback("Sau đó"), 20000);
+}
+
+
+</script>
+
+<hr>
+<h2>JavaScript Promise</h2>
+
+<p id="demoPromise"></p>
+<p id="demoPromise2"></p>
+
+<script>
+function myDisplayer(some) {
+  document.getElementById("demoPromise").innerHTML = some;
+}
+
+let myPromise = new Promise(function(myResolve,myReject) {
+  let x = 1;
+
+// some code (try to change x to 5)
+
+  if (x == 0) {
+    myResolve("0");
+  }
+  else if(x==1) {
+    myReject("1");
+  }
+  else myReject("Error");
+  
+});
+
+//các biến value/error lấy lần lượt biến từ Promise(function()) ở trên
+//thực hiện then lần lượt từ trên xuống dưới
+/*
+myPromise.then(
+  function(value) { }
+  function(error) { }
+);
+*/
+myPromise.then(function(value) {myDisplayer(value);})
+          .then(function(result) {myDisplayer(result);})
+          .then(function(result) {myDisplayer(result);})
+          .catch(function(value) {myDisplayer(value);})
+
+function getData(callback, errorCallback) {
+  try {
+    // Do some network/api stuff...
+    callback(resolve)
+  } catch (e) {
+    errorCallback(e);
+  }
+}
+
+getData(resolve => console.log(resolve), reject => console.error(reject));
+
+function getDataAsync() {
+  return new Promise((resolve, reject) => {
+    let num1 = 1;
+    let num2 = 3;
+    getData(resolve, reject);
+  });
+}
+
+getDataAsync() 
+    .then(result => console.log(result))
+    .catch(error => console.error(error));
+
+</script>
+
+</body>
+</html>
